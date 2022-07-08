@@ -33,3 +33,24 @@
 .navbar-brand:hover {
     color: #22b4a8;
 }
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 190px;
+}
+
+.index-content {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 50px;
+
+}
+
+.auth-navbar {
+    box-shadow: 0px 1px 1px #d3e0e9;
+}
+
+.navbar-container {
+    padding: 0px;
+}

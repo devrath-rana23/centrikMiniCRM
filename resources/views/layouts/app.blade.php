@@ -22,45 +22,47 @@
 
 <body>
     <div id="app">
-        <nav class="navbar">
-            <div class="container">
-                <a class="navbar-brand navbar-btn" href="{{ url('/') }}">
-                    {{ config('app.name', 'CentrikMiniCRM') }}
-                </a>
-                @if (Route::has('index'))
-                    @if (Route::has('login'))
-                        <div class="top-right links">
+        <div class="navbar-container">
+            <nav class="navbar {{ Request::is('/') ? '' : 'auth-navbar' }}">
+                <div class="container">
+                    @if (Request::is('/'))
+                        @if (Route::has('login'))
+                            <span></span>
                             @auth
-                                <a class="nav-link navbar-btn" href="{{ url('/home') }}">Home</a>
+                                <a class="nav-link navbar-btn index-btn" href="{{ route('/home') }}">Home</a>
                             @else
-                                <a class="nav-link navbar-btn" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link navbar-btn index-btn" href="{{ route('login') }}">Login</a>
                             @endauth
-                        </div>
-                    @endif
-                @else
-                    <!-- Authentication Links -->
-                    @guest
-                        <a class="nav-link navbar-btn" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @endif
                     @else
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                        <a class="navbar-brand navbar-btn" href="{{ url('/') }}">
+                            {{ config('app.name', 'CentrikMiniCRM') }}
                         </a>
+                        <!-- Authentication Links -->
+                        @guest
+                            <a class="nav-link navbar-btn" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @else
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
 
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    @endguest
-                @endif
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        @endguest
+                    @endif
 
-            </div>
-        </nav>
+                </div>
+            </nav>
+        </div>
+
 
         <main class="py-4">
             @yield('content')

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content">
-        <div class="title m-b-md">
+        <div class="index-content">
             Centrik Mini CRM
         </div>
     </div>
