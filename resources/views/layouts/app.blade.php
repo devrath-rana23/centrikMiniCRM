@@ -40,7 +40,7 @@
                         </a>
                         <!-- Authentication Links -->
                         @guest
-                            <a class="nav-link navbar-btn" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link navbar-btn nav-link-auth" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @else
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
