@@ -1,0 +1,35 @@
+.navbar {
+    padding: 20px 25px 20px 25px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-btn {
+    text-decoration: none;
+    font-size: large;
+    font-family: 'Roboto Mono', monospace;
+    color: #6200EE;
+    font-weight: 600;
+    padding: 10px 5px 10px 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.nav-link {
+    text-transform: uppercase;
+    border-color: #6200EE;
+    background-color: #f3ebff;
+    border-radius: 3px;
+}
+
+.nav-link:hover {
+    border-color: #000000;
+    color: #000000;
+}
+
+.navbar-brand:hover {
+    color: #22b4a8;
+}
