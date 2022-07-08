@@ -1,8 +1,19 @@
+.auth-body {
+    background-color: #22b4a8;
+    padding: 0px;
+    margin: 0px;
+}
+
+.body {
+    padding: 0px;
+    margin: 0px;
+}
+
 .navbar {
     padding: 20px 25px 20px 25px;
 }
 
-.container {
+.container-navbar {
     display: flex;
     justify-content: space-between;
 }
@@ -49,8 +60,26 @@
 
 .auth-navbar {
     box-shadow: 0px 1px 1px #d3e0e9;
+    background-color: #ffffff;
 }
 
-.navbar-container {
-    padding: 0px;
+.auth-container {
+    background-color: #ffffff;
+    margin: 50px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth-image {
+    height: 500px;
+    width: 500px;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
 }

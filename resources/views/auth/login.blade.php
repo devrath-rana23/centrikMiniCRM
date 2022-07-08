@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="auth-container">
+        <div class="auth-content">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Login') }}</div>
@@ -76,5 +76,6 @@
                 </div>
             </div>
         </div>
+        <img class="auth-image" src="{{ asset('assets/img/auth-image.png') }}" alt="">
     </div>
 @endsection

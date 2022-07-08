@@ -20,11 +20,11 @@
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body class="{{ Request::is('login') ? 'auth-body' : 'body' }}">
     <div id="app">
         <div class="navbar-container">
-            <nav class="navbar {{ Request::is('/') ? '' : 'auth-navbar' }}">
-                <div class="container">
+            <nav class="navbar {{ Request::is('login') ? 'auth-navbar' : '' }}">
+                <div class="container-navbar">
                     @if (Request::is('/'))
                         @if (Route::has('login'))
                             <span></span>
@@ -64,7 +64,7 @@
         </div>
 
 
-        <main class="py-4">
+        <main class="py-4 {{ Request::is('login') ? 'auth-main' : '' }}">
             @yield('content')
         </main>
     </div>
