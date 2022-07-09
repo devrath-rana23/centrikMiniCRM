@@ -28,9 +28,24 @@ class Company extends Model
     ];
 
     /**
+     * @var integer
+     */
+    static $page_limit;
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     protected $hidden = [];
+
+    public function __construct()
+    {
+        self::$page_limit = config('constants.PAGE_LIMIT');
+    }
+
+    public function fetchListWithPagination()
+    {
+        return self::paginate(self::$page_limit);
+    }
 }

@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use Illuminate\Http\Request;
+use App\Http\Requests\CompanyRequest;
 
 class CompanyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role_based_authorization');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = (new Company)->fetchListWithPagination();
+        return view('company.list', compact('companies'));
     }
 
     /**
@@ -23,7 +31,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('company.create');
     }
 
     /**
@@ -32,9 +40,10 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
         //
+        dd($request);
     }
 
     /**

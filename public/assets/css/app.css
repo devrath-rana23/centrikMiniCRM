@@ -62,6 +62,8 @@ body::-webkit-scrollbar {
 
 .nav-link-auth {
     margin-right: 55px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .nav-link:hover {
@@ -369,6 +371,13 @@ h6 {
     margin-left: 60px;
 }
 
+.list-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10rem;
+}
 /* Responsive */
 @media screen and (max-width: 1090px) {
     .auth-container {

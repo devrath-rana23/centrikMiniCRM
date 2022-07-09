@@ -41,8 +41,7 @@
                     @else
                         @if (Request::is('login'))
                             <a class="navbar-brand navbar-btn" href="{{ url('/') }}">
-                                {{ config('app.name', 'CentrikMiniCRM') }}
-                            </a>
+                                <img src="{{ asset('assets/img/logo.png') }}" alt=""></a>
                         @endif
 
                         <!-- Authentication Links -->
@@ -55,7 +54,7 @@
                                 <a href="javascript:void(0)" class="hamburger"><span></span></a>
                                 {{-- LOGO --}}
                                 <a href="{{ route('index') }}">
-                                    <img src="{{ asset('assets/img/favicon.ico') }}" alt="" srcset="">
+                                    <img src="{{ asset('assets/img/logo.png') }}" alt="" srcset="">
                                 </a>
                             </div>
                             {{-- Side Navigation Bar --}}
@@ -63,10 +62,10 @@
                                 <span class="close"></span>
                                 <div class="sidebar-container scrollbar-styling">
                                     <a href="{{ route('index') }}" class="menu-logo"><img
-                                            src="{{ asset('assets/img/favicon.ico') }}" alt=""></a>
+                                            src="{{ asset('assets/img/logo.png') }}" alt=""></a>
                                     <ul>
-                                        <li><a href="">Company</a></li>
-                                        <li><a href="">Employee</a></li>
+                                        <li><a href="{{ route('company.index') }}">Company</a></li>
+                                        <li><a href="{{ route('employee.index') }}">Employee</a></li>
                                     </ul>
                                 </div>
                             </div>
