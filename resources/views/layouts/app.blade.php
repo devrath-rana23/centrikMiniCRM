@@ -27,7 +27,7 @@
 <body class="{{ Request::is('login') ? 'auth-body' : 'body' }}">
     <div id="app">
         <div class="navbar-container">
-            <nav class="navbar {{ Request::is('login') ? 'auth-navbar' : '' }}">
+            <nav class="navbar {{ Request::is('/') ? '' : 'auth-navbar' }}">
                 <div class="container-navbar">
                     @if (Request::is('/'))
                         @if (Route::has('login'))

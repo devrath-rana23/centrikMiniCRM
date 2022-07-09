@@ -102,11 +102,21 @@ body::-webkit-scrollbar {
     border-radius: 4px;
     display: flex;
     align-items: center;
-    height: 50rem;
+    height: 50%;
+}
+
+.dashboard-container {
+    background-color: #ffffff;
+    margin: 50px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30rem;
 }
 
 .auth-image {
-    height: 50rem;
+    height: 50%;
     width: 50%;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -122,7 +132,7 @@ body::-webkit-scrollbar {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50rem;
+    height: 50%;
 }
 
 .card-header {
@@ -355,6 +365,10 @@ h6 {
     visibility: visible;
 }
 
+.dashboard-content {
+    margin-left: 60px;
+}
+
 /* Responsive */
 @media screen and (max-width: 1090px) {
     .auth-container {
@@ -364,6 +378,17 @@ h6 {
         display: flex;
         align-items: center;
         height: 100vh;
+        flex-direction: column;
+    }
+
+    .dashboard-container {
+        background-color: #ffffff;
+        margin: 50px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30rem;
         flex-direction: column;
     }
 
