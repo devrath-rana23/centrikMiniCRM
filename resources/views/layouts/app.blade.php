@@ -70,13 +70,15 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div>
-                                <a class="read-more textMore"
+                            <div class="top-right-links">
+                                <a class="expand-more Expand expand"
                                     href="javascript:void(0)">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</a>
-                                <a class="read-less textMore" href="javascript:void(0)">Read less</a>
-                                <a style="" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }} </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a style="display:none;" class="logout-btn" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }} </a></li>
+                                </ul>
+
                             </div>
                             <form style="display: none;" id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf

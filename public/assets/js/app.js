@@ -6,17 +6,14 @@ $(function () {
     $('.sidebar-menu .close').click(function () {
         $(this).parent().toggleClass('show')
     });
-    $('.textMore').click(function () {
-        if ($('.textMore').text() == 'Read more') {
-            $('.showLess').css("display", "none");
-            $('.showMore').css("display", "block");
-            $(".textMore").text("Read less");
-            $(".textMore").attr("class", "read-less textMore");
+    $('.Expand').click(function () {
+        if ($('.Expand').attr("class") == 'expand-more Expand expand') {
+            $('.logout-btn').css('display', 'block');
+            $(".Expand").attr("class", "expand-less Expand");
         } else {
-            $('.showLess').css("display", "block");
-            $('.showMore').css("display", "none");
-            $(".textMore").text("Read more");
-            $(".textMore").attr("class", "read-more textMore");
+            $('.logout-btn').css('display', 'none');
+
+            $(".Expand").attr("class", "expand-more Expand expand");
         }
     });
 })

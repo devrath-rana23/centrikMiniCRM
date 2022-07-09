@@ -102,11 +102,11 @@ body::-webkit-scrollbar {
     border-radius: 4px;
     display: flex;
     align-items: center;
-    height: 100vh;
+    height: 50rem;
 }
 
 .auth-image {
-    height: 100vh;
+    height: 50rem;
     width: 50%;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -122,7 +122,7 @@ body::-webkit-scrollbar {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 50rem;
 }
 
 .card-header {
@@ -162,7 +162,16 @@ body::-webkit-scrollbar {
     justify-content: center;
 }
 
-a.read-more {
+.top-right-links>a:hover {
+    color: #22b4a8;
+}
+
+.dropdown-user {
+    list-style: none;
+    position: absolute;
+}
+
+a.expand-more {
     font-weight: 700;
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -170,7 +179,7 @@ a.read-more {
     display: inline-block;
 }
 
-a.read-more:after {
+a.expand-more:after {
     content: "";
     display: inline-block;
     height: 10px;
@@ -182,7 +191,7 @@ a.read-more:after {
     vertical-align: 2.7px;
 }
 
-a.read-less {
+a.expand-less {
     font-weight: 700;
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -190,7 +199,7 @@ a.read-less {
     display: inline-block;
 }
 
-a.read-less:after {
+a.expand-less:after {
     content: "";
     display: inline-block;
     height: 10px;
