@@ -15,6 +15,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('assets/js/app.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -38,26 +39,46 @@
                             @endauth
                         @endif
                     @else
-                        <a class="navbar-brand navbar-btn" href="{{ url('/') }}">
-                            {{ config('app.name', 'CentrikMiniCRM') }}
-                        </a>
+                        @if (Request::is('login'))
+                            <a class="navbar-brand navbar-btn" href="{{ url('/') }}">
+                                {{ config('app.name', 'CentrikMiniCRM') }}
+                            </a>
+                        @endif
+
                         <!-- Authentication Links -->
                         @guest
                             <a class="nav-link navbar-btn nav-link-auth"
                                 href="{{ route('login') }}">{{ __('Login') }}</a>
                         @else
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <div class="logo">
+                                {{-- Hamberger Icon --}}
+                                <a href="javascript:void(0)" class="hamburger"><span></span></a>
+                                {{-- LOGO --}}
+                                <a href="{{ route('index') }}">
+                                    <img src="{{ asset('assets/img/favicon.ico') }}" alt="" srcset="">
+                                </a>
+                            </div>
+                            {{-- Side Navigation Bar --}}
+                            <div class="sidebar-menu">
+                                <span class="close"></span>
+                                <div class="sidebar-container scrollbar-styling">
+                                    <a href="{{ route('index') }}" class="menu-logo"><img
+                                            src="{{ asset('assets/img/favicon.ico') }}" alt=""></a>
+                                    <ul>
+                                        <li><a href="">Cat1</a></li>
+                                        <li><a href="">Cat2</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <a class="read-more textMore"
+                                    href="javascript:void(0)">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</a>
+                                <a class="read-less textMore" href="javascript:void(0)">Read less</a>
+                                <a style="" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }} </a>
+                            </div>
+                            <form style="display: none;" id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
                             </form>
                         @endguest
