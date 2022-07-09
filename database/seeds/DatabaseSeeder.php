@@ -41,8 +41,8 @@ class DatabaseSeeder extends Seeder
         Role::insert($roles);
 
         $super_admin = User::create([
-            'first_name' => Str::random(10),
-            'last_name' => Str::random(10),
+            'first_name' => 'SuperAdmin',
+            'last_name' => 'User',
             'phone' => rand(1111111111, 9999999999),
             'email' => 'admin@admin.com',
             'password' => Hash::make('password'),

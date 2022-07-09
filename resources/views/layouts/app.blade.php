@@ -65,8 +65,8 @@
                                     <a href="{{ route('index') }}" class="menu-logo"><img
                                             src="{{ asset('assets/img/favicon.ico') }}" alt=""></a>
                                     <ul>
-                                        <li><a href="">Cat1</a></li>
-                                        <li><a href="">Cat2</a></li>
+                                        <li><a href="">Company</a></li>
+                                        <li><a href="">Employee</a></li>
                                     </ul>
                                 </div>
                             </div>
