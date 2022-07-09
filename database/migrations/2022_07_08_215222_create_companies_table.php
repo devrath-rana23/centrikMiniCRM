@@ -17,6 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
+            $table->string('logo');
             $table->string('website');
             $table->string('email');
             $table->integer('created_at')->unsigned();

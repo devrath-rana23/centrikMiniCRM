@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\User;
 use App\Role;
 use App\RoleUserPivot;
+use Ramsey\Uuid\Type\Integer;
 
 class DatabaseSeeder extends Seeder
 {
@@ -40,7 +41,9 @@ class DatabaseSeeder extends Seeder
         Role::insert($roles);
 
         $super_admin = User::create([
-            'name' => Str::random(10),
+            'first_name' => Str::random(10),
+            'last_name' => Str::random(10),
+            'phone' => rand(1111111111, 9999999999),
             'email' => 'admin@admin.com',
             'password' => Hash::make('password'),
             'created_at' => $date->getTimestamp(),
