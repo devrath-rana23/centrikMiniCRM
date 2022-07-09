@@ -31,5 +31,8 @@ class Role extends Model
      */
     protected $hidden = [];
 
-    const ROLES = [1 => 'Super Admin', 2 => 'Employee', 3 => 'Platform Admin'];
+    const SUPER_ADMIN_ROLE = 1;
+    const PLATFORM_ADMIN_ROLE = 2;
+    const EMPLOYEE_ROLE = 3;
+    const ROLES = [self::SUPER_ADMIN_ROLE => 'Super Admin', self::PLATFORM_ADMIN_ROLE => 'Employee', self::EMPLOYEE_ROLE => 'Platform Admin'];
 }

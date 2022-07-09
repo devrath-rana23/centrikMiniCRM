@@ -32,7 +32,7 @@
                         @if (Route::has('login'))
                             <span></span>
                             @auth
-                                <a class="nav-link navbar-btn index-btn" href="{{ route('/home') }}">Home</a>
+                                <a class="nav-link navbar-btn index-btn" href="{{ route('home') }}">Home</a>
                             @else
                                 <a class="nav-link navbar-btn index-btn" href="{{ route('login') }}">Login</a>
                             @endauth

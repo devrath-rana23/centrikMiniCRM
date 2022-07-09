@@ -32,4 +32,8 @@ class RoleUserPivot extends Model
      * @var array
      */
     protected $hidden = [];
+
+    static function getRoleIdBasedOnUserId($user_id){
+        return self::where('user_id', $user_id)->value('role_id');
+    }
 }

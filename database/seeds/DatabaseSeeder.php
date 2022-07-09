@@ -22,17 +22,17 @@ class DatabaseSeeder extends Seeder
 
         $roles = [
             [
-                'name' => Role::ROLES[1],
+                'name' => Role::ROLES[Role::SUPER_ADMIN_ROLE],
                 'created_at' => $date->getTimestamp(),
                 'updated_at' => $date->getTimestamp(),
             ],
             [
-                'name' => Role::ROLES[2],
+                'name' => Role::ROLES[Role::PLATFORM_ADMIN_ROLE],
                 'created_at' => $date->getTimestamp(),
                 'updated_at' => $date->getTimestamp(),
             ],
             [
-                'name' => Role::ROLES[3],
+                'name' => Role::ROLES[Role::EMPLOYEE_ROLE],
                 'created_at' => $date->getTimestamp(),
                 'updated_at' => $date->getTimestamp(),
             ]
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
 
         RoleUserPivot::insert([
             'user_id' => $super_admin->id,
-            'role_id' => 1,
+            'role_id' => Role::SUPER_ADMIN_ROLE,
             'created_at' => $date->getTimestamp(),
             'updated_at' => $date->getTimestamp()
         ]);
