@@ -74,6 +74,7 @@ body::-webkit-scrollbar {
 
 .index-content {
     font-size: 50px;
+    color: #636b6f;
 }
 
 .auth-navbar {
@@ -147,7 +148,8 @@ body::-webkit-scrollbar {
     cursor: pointer;
     font-weight: bold;
 }
-.forgot-password-btn{
+
+.forgot-password-btn {
     display: flex;
     justify-content: center;
 }
