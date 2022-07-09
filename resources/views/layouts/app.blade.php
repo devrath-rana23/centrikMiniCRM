@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- HTML favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
-    
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'CentrikMiniCRM') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('assets/js/app.js') }}" defer></script>
@@ -43,7 +43,8 @@
                         </a>
                         <!-- Authentication Links -->
                         @guest
-                            <a class="nav-link navbar-btn nav-link-auth" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link navbar-btn nav-link-auth"
+                                href="{{ route('login') }}">{{ __('Login') }}</a>
                         @else
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

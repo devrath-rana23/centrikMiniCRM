@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompaniesTable extends Migration
+class CreateCompanyUsersPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('company_users_pivot', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->string('website');
-            $table->string('email');
+            $table->integer('user_id')->unsigned()->comment('Relation with users  table id');
+            $table->integer('company_id')->unsigned()->comment('Relation with companies table id');
             $table->integer('created_at')->unsigned();
             $table->integer('updated_at')->unsigned();
             $table->integer('deleted_at')->unsigned()->nullable();
@@ -32,6 +30,6 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('company_users_pivot');
     }
 }

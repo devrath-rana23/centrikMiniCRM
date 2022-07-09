@@ -15,7 +15,11 @@ class CreateRolesUsersPivotTable extends Migration
     {
         Schema::create('roles_users_pivot', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('user_id')->unsigned()->comment('Relation with users  table id');
+            $table->integer('role_id')->unsigned()->comment('Relation with roles table id');
+            $table->integer('created_at')->unsigned();
+            $table->integer('updated_at')->unsigned();
+            $table->integer('deleted_at')->unsigned()->nullable();
         });
     }
 
