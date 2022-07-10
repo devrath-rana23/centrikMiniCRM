@@ -7,7 +7,7 @@
                 <h1>Company List</h1>
             </div>
             <div>
-                <a href="{{route('company.create')}}">Add</a>
+                <a href="{{ route('company.create') }}">Add</a>
             </div>
         </div>
         <div class="list-body">
@@ -15,6 +15,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Logo</th>
                         <th>Address</th>
                         <th>Website</th>
                         <th>Email</th>
@@ -26,6 +27,7 @@
                         @foreach ($companies as $company)
                             <tr>
                                 <td>{{ $company->name }}</td>
+                                <td><img class="list-image" src=" {{ url('storage/' . $company->logo) }}" alt="" srcset=""></td>
                                 <td>{{ $company->address }}</td>
                                 <td>{{ $company->website }}</td>
                                 <td>{{ $company->email }}</td>

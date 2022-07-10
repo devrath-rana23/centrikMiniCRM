@@ -371,20 +371,27 @@ h6 {
     margin-left: 60px;
 }
 
-.list-container{
+.list-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin-top: 10rem;
 }
-.create-container{
+
+.create-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin-top: 10rem;
 }
+
+.list-image {
+    height: 50px;
+    width: 100px;
+}
+
 /* Responsive */
 @media screen and (max-width: 1090px) {
     .auth-container {
