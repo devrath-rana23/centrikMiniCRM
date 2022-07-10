@@ -6,8 +6,8 @@
             <h1>Company</h1>
         </div>
         <div>
-            <h3>Add Company</h3>
-            <form action="{{ route('company.store') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data"
+            <h3>Edit Company</h3>
+            <form action="{{ route('company.update',['company' => $company->id]) }}" method="PATCH" accept-charset="UTF-8" enctype="multipart/form-data"
                 role="form">
                 @csrf
                 @include("company.partialform")

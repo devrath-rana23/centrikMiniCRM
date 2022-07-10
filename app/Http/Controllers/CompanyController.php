@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Company;
-use Illuminate\Http\Request;
 use App\Http\Requests\CompanyRequest;
 
 class CompanyController extends Controller
@@ -58,7 +57,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        return view('company.show');
+        $company = Company::showCompany($id);
+        return view('company.show', compact('company'));
     }
 
     /**
@@ -69,7 +69,8 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = Company::showCompany($id);
+        return view('company.edit', compact('company'));
     }
 
     /**
@@ -81,7 +82,12 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        if (isset($data['logo']) && !empty($data['logo'])) {
+            $data['logo'] = request()->file('logo')->store('logo_' . time() . '_' . $request->input('name'), 'public');
+        }
+        Company::updateCompany($data, $id);
+        return redirect(route('company.index'));
     }
 
     /**
@@ -92,6 +98,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Company::destroyCompany($id);
+        return redirect(route('company.index'));
     }
 }

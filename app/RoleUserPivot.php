@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -33,7 +34,18 @@ class RoleUserPivot extends Model
      */
     protected $hidden = [];
 
-    static function getRoleIdBasedOnUserId($user_id){
+    static function getRoleIdBasedOnUserId($user_id)
+    {
         return self::where('user_id', $user_id)->value('role_id');
+    }
+
+    static function createEmployeeRoleRelationData($role_id, $employee_id)
+    {
+        $data = [
+            'role_id' => $role_id,
+            'user_id' => $employee_id,
+        ];
+        $data = Helper::dataWithTimestamps($data);
+        return self::insert($data);
     }
 }

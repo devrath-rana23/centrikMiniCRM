@@ -7,48 +7,25 @@
         </div>
         <div>
             <h3>Company Details</h3>
-            <form action="{{ route('company.store') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data"
-                role="form">
-                @csrf
+            <div>
                 <div>
-                    <input placeholder="{{ config('appplaceholder.NAME') }}" type="text" name="name"
-                        class="@error('name') is-invalid @enderror">
-                    @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <h3>{{ config('appplaceholder.NAME') }} - {{ $company->name }}</h3>
                 </div>
                 <div>
-                    <input placeholder="{{ config('appplaceholder.ADDRESS') }}" type="text" name="address"
-                        class="@error('address') is-invalid @enderror">
-                    @error('address')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <h3>{{ config('appplaceholder.LOGO') }} - <img class="list-image"
+                            src="{{ url('storage/' . $company->logo) }}" alt="" srcset=""></h3>
                 </div>
                 <div>
-                    <input placeholder="{{ config('appplaceholder.WEBSITE') }}" type="text" name="website"
-                        class="@error('website') is-invalid @enderror">
-                    @error('website')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <h3>{{ config('appplaceholder.ADDRESS') }} - {{ $company->address }}</h3>
                 </div>
                 <div>
-                    <input placeholder="{{ config('appplaceholder.EMAIL') }}" type="text" name="email"
-                        class="@error('email') is-invalid @enderror">
-                    @error('email')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <h3>{{ config('appplaceholder.WEBSITE') }} - {{ $company->website }}</h3>
                 </div>
                 <div>
-                    <input placeholder="{{ config('appplaceholder.LOGO') }}" type="file" name="logo"
-                        class="@error('logo') is-invalid @enderror" class="@error('name') is-invalid @enderror">
-                    @error('logo')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <h3>{{ config('appplaceholder.EMAIL') }} - {{ $company->email }}</h3>
                 </div>
-                <div>
-                    <button>Submit</button>
-                </div>
-            </form>
+            </div>
+
         </div>
 
     </div>

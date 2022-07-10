@@ -32,7 +32,21 @@
                                 <td>{{ $company->address }}</td>
                                 <td>{{ $company->website }}</td>
                                 <td>{{ $company->email }}</td>
-                                <td colspan="3">EDIT DELETE INFO</td>
+                                <td colspan="3"><a href="javascript:void(0);"
+                                        onclick="event.preventDefault();document.getElementById('edit-company-form-{{ $company->id }}').submit();">EDIT</a>
+                                    <form style="display: none;" id="edit-company-form-{{ $company->id }}"
+                                        action="{{ route('company.edit', ['company' => $company->id]) }}" method="GET">
+                                        @csrf
+                                    </form>
+                                    <a href="javascript:void(0);"
+                                        onclick="event.preventDefault();document.getElementById('delete-company-form-{{ $company->id }}').submit();">DELETE</a>
+                                    <form style="display: none;" id="delete-company-form-{{ $company->id }}"
+                                        action="{{ route('company.destroy', ['company' => $company->id]) }}"
+                                        method="DELETE">
+                                        @csrf
+                                    </form>
+                                    <a href="{{ route('company.show', ['company' => $company->id]) }}">INFO</a>
+                                </td>
                             </tr>
                         @endforeach
                     @else

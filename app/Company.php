@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
@@ -47,19 +48,36 @@ class Company extends Model
 
     public function fetchListWithPagination()
     {
-        return self::paginate(self::$page_limit);
+        return self::select('companies.*')->orderBy('id', 'DESC')->paginate(self::$page_limit);
     }
 
-    static function dataWithTimestamps($data)
+    public function fetchListOfCompanies()
     {
-        $data['created_at'] = $data['updated_at'] = Carbon::now();
-        return $data;
+        return self::select('companies.*')->orderBy('id', 'DESC')->get();
     }
+
 
     static function createCompany($data)
     {
         unset($data['_token']);
-        $data = self::dataWithTimestamps($data);
+        $data = Helper::dataWithTimestamps($data);
         return self::insert($data);
+    }
+
+    static function showCompany($id)
+    {
+        return self::find($id);
+    }
+
+    static function destroyCompany($id)
+    {
+        return self::delete($id);
+    }
+
+    static function updateCompany($data, $id)
+    {
+        unset($data['_token']);
+        $data['updated_at'] = Carbon::now();
+        return self::where('id', $id)->update($data);
     }
 }

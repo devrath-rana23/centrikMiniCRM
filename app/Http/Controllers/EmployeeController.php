@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Company;
+use App\Http\Requests\EmployeeRequest;
+use App\User;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +15,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('employee.list');
+        $employees = (new User)->fetchListWithPagination();
+        return view('employee.list', compact('employees'));
     }
 
     /**
@@ -23,7 +26,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $companies = (new Company)->fetchListOfCompanies();
+        return view('employee.create', compact('companies'));
     }
 
     /**
@@ -32,9 +36,11 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
-        //
+        $data = $request->all();
+        User::createEmployee($data);
+        return redirect(route('employee.index'));
     }
 
     /**
@@ -45,7 +51,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = User::showEmployee($id);
+        return view('employee.show', compact('employee'));
     }
 
     /**
@@ -56,7 +63,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employee = User::showEmployee($id);
+        return view('employee.edit', compact('employee'));
     }
 
     /**
@@ -66,9 +74,11 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeeRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        User::updateEmployee($data, $id);
+        return redirect(route('employee.index'));
     }
 
     /**
@@ -79,6 +89,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroyEmployee($id);
+        return redirect(route('employee.index'));
     }
 }
