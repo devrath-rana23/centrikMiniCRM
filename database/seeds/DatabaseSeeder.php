@@ -8,6 +8,7 @@ use App\User;
 use App\Role;
 use App\RoleUserPivot;
 use Ramsey\Uuid\Type\Integer;
+use Illuminate\Support\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,18 +24,18 @@ class DatabaseSeeder extends Seeder
         $roles = [
             [
                 'name' => Role::ROLES[Role::SUPER_ADMIN_ROLE],
-                'created_at' => $date->getTimestamp(),
-                'updated_at' => $date->getTimestamp(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => Role::ROLES[Role::PLATFORM_ADMIN_ROLE],
-                'created_at' => $date->getTimestamp(),
-                'updated_at' => $date->getTimestamp(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ],
             [
                 'name' => Role::ROLES[Role::EMPLOYEE_ROLE],
-                'created_at' => $date->getTimestamp(),
-                'updated_at' => $date->getTimestamp(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
         ];
 
@@ -46,15 +47,15 @@ class DatabaseSeeder extends Seeder
             'phone' => rand(1111111111, 9999999999),
             'email' => 'admin@admin.com',
             'password' => Hash::make('password'),
-            'created_at' => $date->getTimestamp(),
-            'updated_at' => $date->getTimestamp()
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         RoleUserPivot::insert([
             'user_id' => $super_admin->id,
             'role_id' => Role::SUPER_ADMIN_ROLE,
-            'created_at' => $date->getTimestamp(),
-            'updated_at' => $date->getTimestamp()
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
     }
 }

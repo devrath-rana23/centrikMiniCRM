@@ -42,8 +42,12 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        //
-        dd($request);
+        $data = $request->all();
+        if (isset($data['logo']) && !empty($data['logo'])) {
+            $data['logo'] = request()->file('logo')->store('logo_' . time() . '_' . $request->input('name'));
+        }
+        Company::createCompany($data);
+        return redirect(route('company.index'));
     }
 
     /**
@@ -75,7 +79,7 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CompanyRequest $request, $id)
     {
         //
     }

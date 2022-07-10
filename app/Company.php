@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 class Company extends Model
 {
@@ -47,5 +48,18 @@ class Company extends Model
     public function fetchListWithPagination()
     {
         return self::paginate(self::$page_limit);
+    }
+
+    static function dataWithTimestamps($data)
+    {
+        $data['created_at'] = $data['updated_at'] = Carbon::now();
+        return $data;
+    }
+
+    static function createCompany($data)
+    {
+        unset($data['_token']);
+        $data = self::dataWithTimestamps($data);
+        return self::insert($data);
     }
 }

@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use App\RoleUserPivot;
 use App\Role;
+use Exception;
 
 class RoleBasedAuthorization
 {
@@ -18,11 +19,15 @@ class RoleBasedAuthorization
      */
     public function handle($request, Closure $next)
     {
-        $user = Auth::user();
-        $role_id = RoleUserPivot::getRoleIdBasedOnUserId($user->id);
-        if ($role_id == Role::EMPLOYEE_ROLE) {
-            abort(403);
+        try {
+            $user = Auth::user();
+            $role_id = RoleUserPivot::getRoleIdBasedOnUserId($user->id);
+            if ($role_id == Role::EMPLOYEE_ROLE) {
+                abort(403);
+            }
+            return $next($request);
+        } catch (Exception $ex) {
+            return redirect(route('index'));
         }
-        return $next($request);
     }
 }

@@ -15,11 +15,10 @@ class CreateCompanyUsersPivotTable extends Migration
     {
         Schema::create('company_users_pivot', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned()->comment('Relation with users  table id');
-            $table->integer('company_id')->unsigned()->comment('Relation with companies table id');
-            $table->integer('created_at')->unsigned();
-            $table->integer('updated_at')->unsigned();
-            $table->integer('deleted_at')->unsigned()->nullable();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

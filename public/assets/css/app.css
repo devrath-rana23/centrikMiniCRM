@@ -378,6 +378,13 @@ h6 {
     align-items: center;
     margin-top: 10rem;
 }
+.create-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10rem;
+}
 /* Responsive */
 @media screen and (max-width: 1090px) {
     .auth-container {
