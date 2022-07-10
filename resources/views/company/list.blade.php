@@ -27,7 +27,8 @@
                         @foreach ($companies as $company)
                             <tr>
                                 <td>{{ $company->name }}</td>
-                                <td><img class="list-image" src=" {{ url('storage/' . $company->logo) }}" alt="" srcset=""></td>
+                                <td><img class="list-image" src=" {{ url('storage/' . $company->logo) }}" alt=""
+                                        srcset=""></td>
                                 <td>{{ $company->address }}</td>
                                 <td>{{ $company->website }}</td>
                                 <td>{{ $company->email }}</td>

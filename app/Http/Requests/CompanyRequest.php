@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Url;
+use App\Rules\Emailcustom;
 
 class CompanyRequest extends FormRequest
 {
@@ -13,6 +15,7 @@ class CompanyRequest extends FormRequest
      */
     protected $rules = [
         'name' => 'required',
+
     ];
 
     /**
@@ -32,12 +35,9 @@ class CompanyRequest extends FormRequest
      */
     public function rules()
     {
-        /*
-return preg_match('/(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.(com)'.'((:[0-9]{1,5})?\\/.*)?$/i' ,$value);
-
-return preg_match('/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/', $value);
-        */
         isset($_FILES['logo']) && !empty($_FILES['logo']) ? $this->rules['logo'] = 'mimes:jpeg,png,jpg,gif,svg|min:1' : '';
+        isset($_REQUEST['website']) && !empty($_REQUEST['website']) ? $this->rules['website'] = new Url : '';
+        isset($_REQUEST['email']) && !empty($_REQUEST['email']) ? $this->rules['email'] = new Emailcustom : '';
         return $this->rules;
     }
 }

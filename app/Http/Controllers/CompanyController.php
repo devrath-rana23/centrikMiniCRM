@@ -44,7 +44,7 @@ class CompanyController extends Controller
     {
         $data = $request->all();
         if (isset($data['logo']) && !empty($data['logo'])) {
-            $data['logo'] = request()->file('logo')->store('logo_' . time() . '_' . $request->input('name'),'public');
+            $data['logo'] = request()->file('logo')->store('logo_' . time() . '_' . $request->input('name'), 'public');
         }
         Company::createCompany($data);
         return redirect(route('company.index'));
@@ -58,7 +58,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('company.show');
     }
 
     /**
