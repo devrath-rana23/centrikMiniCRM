@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     static function destroyEmployee($id)
     {
-        return self::delete($id);
+        return self::find($id)->delete();
     }
 
     static function updateEmployee($data, $id)

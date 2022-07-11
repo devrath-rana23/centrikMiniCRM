@@ -48,7 +48,7 @@ class Company extends Model
 
     public function fetchListWithPagination()
     {
-        return self::select('companies.*')->orderBy('id', 'DESC')->paginate(self::$page_limit);
+        return self::select('companies.*')->orderBy('id', 'DESC')->whereNull('deleted_at')->paginate(self::$page_limit);
     }
 
     public function fetchListOfCompanies()
@@ -71,7 +71,7 @@ class Company extends Model
 
     static function destroyCompany($id)
     {
-        return self::delete($id);
+        return self::find($id)->delete();
     }
 
     static function updateCompany($data, $id)
