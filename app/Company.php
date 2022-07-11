@@ -60,6 +60,7 @@ class Company extends Model
     static function createCompany($data)
     {
         unset($data['_token']);
+        unset($data['_method']);
         $data = Helper::dataWithTimestamps($data);
         return self::insert($data);
     }
@@ -77,6 +78,7 @@ class Company extends Model
     static function updateCompany($data, $id)
     {
         unset($data['_token']);
+        unset($data['_method']);
         $data['updated_at'] = Carbon::now();
         return self::where('id', $id)->update($data);
     }

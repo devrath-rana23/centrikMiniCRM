@@ -10,7 +10,7 @@
             <form action="{{ route('employee.store') }}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data"
                 role="form">
                 @csrf
-                @include("employee.partialform")
+                @include('employee.partialform')
             </form>
         </div>
 

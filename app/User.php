@@ -56,6 +56,7 @@ class User extends Authenticatable
     static function createEmployee($data)
     {
         unset($data['_token']);
+        unset($data['_method']);
         $data = Helper::dataWithTimestamps($data);
         $employee =  self::create($data);
         CompanyUserPivot::createEmployeeCompanyRelationData($data->company_id, $employee->id);
@@ -76,6 +77,7 @@ class User extends Authenticatable
     static function updateEmployee($data, $id)
     {
         unset($data['_token']);
+        unset($data['_method']);
         $data['updated_at'] = Carbon::now();
         CompanyUserPivot::updateEmployeeCompanyRelationData($data->company_id, $id);
         return self::where('id', $id)->update($data);

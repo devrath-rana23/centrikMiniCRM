@@ -35,15 +35,17 @@
                                 <td colspan="3"><a href="javascript:void(0);"
                                         onclick="event.preventDefault();document.getElementById('edit-employee-form-{{ $employee->id }}').submit();">EDIT</a>
                                     <form style="display: none;" id="edit-employee-form-{{ $employee->id }}"
-                                        action="{{ route('employee.edit', ['employee' => $employee->id]) }}" method="GET">
+                                        action="{{ route('employee.edit', ['employee' => $employee->id]) }}"
+                                        method="GET">
                                         @csrf
                                     </form>
                                     <a href="javascript:void(0);"
                                         onclick="event.preventDefault();document.getElementById('delete-employee-form-{{ $employee->id }}').submit();">DELETE</a>
                                     <form style="display: none;" id="delete-employee-form-{{ $employee->id }}"
                                         action="{{ route('employee.destroy', ['employee' => $employee->id]) }}"
-                                        method="DELETE">
+                                        method="POST">
                                         @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
                                     </form>
                                     <a href="{{ route('employee.show', ['employee' => $employee->id]) }}">INFO</a>
                                 </td>

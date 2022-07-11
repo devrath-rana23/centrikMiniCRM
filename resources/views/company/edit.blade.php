@@ -7,10 +7,11 @@
         </div>
         <div>
             <h3>Edit Company</h3>
-            <form action="{{ route('company.update',['company' => $company->id]) }}" method="PATCH" accept-charset="UTF-8" enctype="multipart/form-data"
-                role="form">
+            <form action="{{ route('company.update', ['company' => $company->id]) }}" method="POST" accept-charset="UTF-8"
+                enctype="multipart/form-data" role="form">
                 @csrf
-                @include("company.partialform")
+                <input name="_method" type="hidden" value="PUT">
+                @include('company.partialform')
             </form>
         </div>
 

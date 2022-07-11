@@ -42,7 +42,8 @@
                                         onclick="event.preventDefault();document.getElementById('delete-company-form-{{ $company->id }}').submit();">DELETE</a>
                                     <form style="display: none;" id="delete-company-form-{{ $company->id }}"
                                         action="{{ route('company.destroy', ['company' => $company->id]) }}"
-                                        method="DELETE">
+                                        method="POST">
+                                        <input name="_method" type="hidden" value="DELETE">
                                         @csrf
                                     </form>
                                     <a href="{{ route('company.show', ['company' => $company->id]) }}">INFO</a>
