@@ -2,10 +2,11 @@
 
 namespace App;
 
-use App\Helpers\Helper;
+use App\Http\Helpers\Helper;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -43,6 +44,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Get the user.
+     */
+    public function roles()
+    {
+        return $this->belongsTo(RoleUserPivot::class, 'user_id');
+    }
+
+    /**
+     * Get the user.
+     */
+    public function companies()
+    {
+        return $this->belongsTo(CompanyUserPivot::class, 'user_id');
+    }
+
     public function __construct()
     {
         self::$page_limit = config('constants.PAGE_LIMIT');
@@ -58,8 +75,9 @@ class User extends Authenticatable
         unset($data['_token']);
         unset($data['_method']);
         $data = Helper::dataWithTimestamps($data);
+        $data['password'] =  Hash::make('password');
         $employee =  self::create($data);
-        CompanyUserPivot::createEmployeeCompanyRelationData($data->company_id, $employee->id);
+        CompanyUserPivot::createEmployeeCompanyRelationData($data['company_id'], $employee->id);
         RoleUserPivot::createEmployeeRoleRelationData(Role::EMPLOYEE_ROLE, $employee->id);
         return $employee;
     }
@@ -79,7 +97,9 @@ class User extends Authenticatable
         unset($data['_token']);
         unset($data['_method']);
         $data['updated_at'] = Carbon::now();
-        CompanyUserPivot::updateEmployeeCompanyRelationData($data->company_id, $id);
+        CompanyUserPivot::updateEmployeeCompanyRelationData($data['company_id'], $id);
+        unset($data['company_id']);
+        $data['password'] =  Hash::make('password');
         return self::where('id', $id)->update($data);
     }
 }

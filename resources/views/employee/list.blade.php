@@ -14,10 +14,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Logo</th>
-                        <th>Address</th>
-                        <th>Website</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        {{-- <th>Company</th> --}}
                         <th>Email</th>
                         <th colspan="3">Action</th>
                     </tr>
@@ -26,11 +26,10 @@
                     @if ($employees->count() > 0)
                         @foreach ($employees as $employee)
                             <tr>
-                                <td>{{ $employee->name }}</td>
-                                <td><img class="list-image" src=" {{ url('storage/' . $employee->logo) }}" alt=""
-                                        srcset=""></td>
-                                <td>{{ $employee->address }}</td>
-                                <td>{{ $employee->website }}</td>
+                                <td>{{ $employee->first_name }}</td>
+                                <td>{{ $employee->last_name }}</td>
+                                <td>{{ $employee->phone }}</td>
+                                {{-- <td>{{ $company->name }}</td> --}}
                                 <td>{{ $employee->email }}</td>
                                 <td colspan="3"><a href="javascript:void(0);"
                                         onclick="event.preventDefault();document.getElementById('edit-employee-form-{{ $employee->id }}').submit();">EDIT</a>

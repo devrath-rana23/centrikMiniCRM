@@ -16,6 +16,7 @@ class EmployeeRequest extends FormRequest
         'first_name' => 'required',
         'last_name' => 'required',
         'password' => 'required',
+        'company_id' => 'required',
     ];
 
     /**

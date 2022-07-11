@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Helpers\Helper;
+use App\Http\Helpers\Helper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;

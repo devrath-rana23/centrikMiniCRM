@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Helpers\Helper;
+use App\Http\Helpers\Helper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -34,6 +34,14 @@ class RoleUserPivot extends Model
      */
     protected $hidden = [];
 
+    /**
+     * Get the user.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+    
     static function getRoleIdBasedOnUserId($user_id)
     {
         return self::where('user_id', $user_id)->value('role_id');

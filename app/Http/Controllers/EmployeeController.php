@@ -64,7 +64,8 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employee = User::showEmployee($id);
-        return view('employee.edit', compact('employee'));
+        $companies = (new Company)->fetchListOfCompanies();
+        return view('employee.edit', compact('employee', 'companies'));
     }
 
     /**

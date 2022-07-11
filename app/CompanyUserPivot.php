@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Helpers\Helper;
+use App\Http\Helpers\Helper;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -34,6 +34,14 @@ class CompanyUserPivot extends Model
      * @var array
      */
     protected $hidden = [];
+
+    /**
+     * Get the user.
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
 
     static function createEmployeeCompanyRelationData($company_id, $employee_id)
     {
