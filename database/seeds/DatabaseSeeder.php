@@ -1,13 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use App\User;
 use App\Role;
 use App\RoleUserPivot;
-use Ramsey\Uuid\Type\Integer;
 use Illuminate\Support\Carbon;
 
 class DatabaseSeeder extends Seeder
@@ -19,8 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $date = new DateTime();
-
         $roles = [
             [
                 'name' => Role::ROLES[Role::SUPER_ADMIN_ROLE],
