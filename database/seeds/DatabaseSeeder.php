@@ -35,16 +35,15 @@ class DatabaseSeeder extends Seeder
         ];
 
         Role::insert($roles);
-
-        $super_admin = User::create([
-            'first_name' => 'SuperAdmin',
-            'last_name' => 'User',
-            'phone' => rand(1111111111, 9999999999),
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('password'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+        $super_admin = new User;
+        $super_admin->first_name = 'SuperAdmin';
+        $super_admin->last_name = 'User';
+        $super_admin->phone = rand(1111111111, 9999999999);
+        $super_admin->email = 'admin@admin.com';
+        $super_admin->password = Hash::make('password');
+        $super_admin->created_at = Carbon::now();
+        $super_admin->updated_at = Carbon::now();
+        $super_admin->save();
 
         RoleUserPivot::insert([
             'user_id' => $super_admin->id,

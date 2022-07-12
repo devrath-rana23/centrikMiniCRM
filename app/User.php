@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function fetchListWithPagination()
     {
-        return self::select('users.*')->join('roles_users_pivot', 'users.id', '=', 'roles_users_pivot.user_id')->where('roles_users_pivot.role_id', Role::EMPLOYEE_ROLE)->orderBy('users.id', 'DESC')->paginate(self::$page_limit);
+        return self::select('users.*', 'company_users_pivot.company_id')->join('roles_users_pivot', 'users.id', '=', 'roles_users_pivot.user_id')->join('company_users_pivot', 'company_users_pivot.user_id', '=', 'users.id')->where('roles_users_pivot.role_id', Role::EMPLOYEE_ROLE)->orderBy('users.id', 'DESC')->paginate(self::$page_limit);
     }
 
     static function createEmployee($data)
@@ -76,7 +76,15 @@ class User extends Authenticatable
         unset($data['_method']);
         $data = Helper::dataWithTimestamps($data);
         $data['password'] =  Hash::make('password');
-        $employee =  self::create($data);
+        $employee = new self;
+        $employee->first_name = $data['first_name'];
+        $employee->last_name = $data['last_name'];
+        $employee->email = $data['email'];
+        $employee->phone = $data['phone'];
+        $employee->password = $data['password'];
+        $employee->updated_at = $data['updated_at'];
+        $employee->created_at = $data['created_at'];
+        $employee->save();
         CompanyUserPivot::createEmployeeCompanyRelationData($data['company_id'], $employee->id);
         RoleUserPivot::createEmployeeRoleRelationData(Role::EMPLOYEE_ROLE, $employee->id);
         return $employee;
@@ -89,6 +97,7 @@ class User extends Authenticatable
 
     static function destroyEmployee($id)
     {
+        CompanyUserPivot::deleteUser($id);
         return self::find($id)->delete();
     }
 

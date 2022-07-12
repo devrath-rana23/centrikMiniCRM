@@ -61,4 +61,9 @@ class CompanyUserPivot extends Model
         $data['updated_at'] = Carbon::now();
         return self::where('id', $employee_id)->update($data);
     }
+
+    static function deleteUser($id)
+    {
+        return self::where('user_id', $id)->whereNull('deleted_at')->delete();
+    }
 }

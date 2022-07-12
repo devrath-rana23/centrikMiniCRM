@@ -16,6 +16,9 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = (new User)->fetchListWithPagination();
+        foreach($employees as $key=>$employee){
+            $employees[$key]->company_name = Company::getCompanyName($employee->company_id);
+        }
         return view('employee.list', compact('employees'));
     }
 

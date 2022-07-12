@@ -53,7 +53,7 @@ class Company extends Model
 
     public function fetchListOfCompanies()
     {
-        return self::select('companies.*')->orderBy('id', 'DESC')->get();
+        return self::select('companies.*')->orderBy('id', 'DESC')->whereNull('deleted_at')->get();
     }
 
 
@@ -81,5 +81,10 @@ class Company extends Model
         unset($data['_method']);
         $data['updated_at'] = Carbon::now();
         return self::where('id', $id)->update($data);
+    }
+
+    static function getCompanyName($company_id)
+    {
+        return self::where('id', $company_id)->pluck('name')->first();
     }
 }

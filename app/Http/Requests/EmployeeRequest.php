@@ -36,7 +36,11 @@ class EmployeeRequest extends FormRequest
      */
     public function rules()
     {
-        isset($_REQUEST['email']) && !empty($_REQUEST['email']) ? $this->rules['email'] = new Emailcustom : '';
+        if (isset($_REQUEST['create_employee']) && isset($_REQUEST['email']) && !empty($_REQUEST['email'])) {
+            $this->rules['email'] = ['unique:users,email', new Emailcustom];
+        } else if (isset($_REQUEST['email']) && !empty($_REQUEST['email'])) {
+            $this->rules['email'] = new Emailcustom;
+        }
         isset($_REQUEST['phone']) && !empty($_REQUEST['phone']) ? $this->rules['phone'] = 'numeric|min:10|max:10' : '';
         isset($_REQUEST['password']) && !empty($_REQUEST['password']) ? $this->rules['password'] = 'min:6' : '';
         return $this->rules;

@@ -17,7 +17,7 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Phone</th>
-                        {{-- <th>Company</th> --}}
+                        <th>Company</th>
                         <th>Email</th>
                         <th colspan="3">Action</th>
                     </tr>
@@ -29,7 +29,7 @@
                                 <td>{{ $employee->first_name }}</td>
                                 <td>{{ $employee->last_name }}</td>
                                 <td>{{ $employee->phone }}</td>
-                                {{-- <td>{{ $company->name }}</td> --}}
+                                <td>{{ $employee->company_name }}</td>
                                 <td>{{ $employee->email }}</td>
                                 <td colspan="3"><a href="javascript:void(0);"
                                         onclick="event.preventDefault();document.getElementById('edit-employee-form-{{ $employee->id }}').submit();">EDIT</a>
